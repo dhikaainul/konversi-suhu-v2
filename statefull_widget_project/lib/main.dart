@@ -71,8 +71,27 @@ class MyApp extends StatelessWidget {
                           )
                         ],
                       ),
-                    )
+                    ),
                   ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 225),
+                // color: Colors.transparent,
+                width: 500,
+                height: 60,
+                child: FlatButton(
+                  shape: new RoundedRectangleBorder(),
+                  onPressed: () {},
+                  color: Colors.blue[400],
+                  child: Text(
+                    "Konversi Suhu",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Raleway',
+                      fontSize: 15,
+                    ),
+                  ),
                 ),
               ),
             ],
