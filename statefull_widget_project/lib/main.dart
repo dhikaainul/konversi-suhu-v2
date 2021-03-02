@@ -5,8 +5,17 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  double inputUser = 0;
+  double kelvin = 0;
+  final myController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,8 +31,12 @@ class MyApp extends StatelessWidget {
         body: Container(
           margin: EdgeInsets.all(8),
           child: Column(
-            children: [
+            children: <Widget>[
               TextFormField(
+                controller: myController,
+                onChanged: (value) {
+                  setState(() {});
+                },
                 decoration: InputDecoration(
                   hintText: 'Masukkan Suhu Dalam Celcius',
                 ),
@@ -46,7 +59,7 @@ class MyApp extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
+                        children: <Widget>[
                           Text("Suhu Dalam Kelvin"),
                           SizedBox(height: 22),
                           Text("150", style: TextStyle(fontSize: 45))
@@ -60,7 +73,7 @@ class MyApp extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
+                        children: <Widget>[
                           Text("Suhu Dalam Reamur"),
                           SizedBox(
                             height: 20,
