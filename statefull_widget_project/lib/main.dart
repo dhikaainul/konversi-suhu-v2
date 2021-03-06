@@ -14,11 +14,22 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   double inputUser = 0;
   double kelvin = 0;
-  final myController = TextEditingController();
+  double reamur = 0;
+  TextEditingController myController = TextEditingController();
+
+  konversi() {
+    setState(() {
+      inputUser = double.parse(myController.text);
+      reamur = 4 / 5 * inputUser;
+      kelvin = inputUser + 273;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    var myController2 = myController;
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -33,9 +44,13 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: <Widget>[
               TextFormField(
-                controller: myController,
-                onChanged: (value) {
-                  setState(() {});
+                controller: myController2,
+                onChanged: (str) {
+                  try {
+                    inputUser = double.parse(str);
+                  } catch (e) {
+                    inputUser = 0.0;
+                  }
                 },
                 decoration: InputDecoration(
                   hintText: 'Masukkan Suhu Dalam Celcius',
@@ -62,7 +77,7 @@ class _MyAppState extends State<MyApp> {
                         children: <Widget>[
                           Text("Suhu Dalam Kelvin"),
                           SizedBox(height: 22),
-                          Text("150", style: TextStyle(fontSize: 45))
+                          Text('$kelvin', style: TextStyle(fontSize: 45))
                         ],
                       ),
                     ),
@@ -79,7 +94,7 @@ class _MyAppState extends State<MyApp> {
                             height: 20,
                           ),
                           Text(
-                            "200",
+                            '$reamur',
                             style: TextStyle(fontSize: 45),
                           )
                         ],
@@ -95,7 +110,7 @@ class _MyAppState extends State<MyApp> {
                 height: 60,
                 child: FlatButton(
                   shape: new RoundedRectangleBorder(),
-                  onPressed: () {},
+                  onPressed: konversi,
                   color: Colors.blue[400],
                   child: Text(
                     "Konversi Suhu",
