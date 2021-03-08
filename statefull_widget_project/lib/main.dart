@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:statefull_widget_project/titlenhasilsuhu.dart';
+import 'package:statefull_widget_project/titlenhasilsuhu.dart';
 // import 'package:flutter/services.dart';
 import 'package:statefull_widget_project/widget/Inputsuhu.dart';
 import 'buttonkonverter.dart';
@@ -19,6 +19,7 @@ class _MyAppState extends State<MyApp> {
   double inputUser = 0;
   double kelvin = 0;
   double reamur = 0;
+  double result = 0;
   String selectedDropdown = "Kelvin";
 
   konversi() {
@@ -68,23 +69,35 @@ class _MyAppState extends State<MyApp> {
                 isExpanded: false,
               ),
               //content hasil suhu
+              Container(
+                margin: EdgeInsets.only(top: 20, bottom: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Titlenhasilsuhu(
+                      hasil: result,
+                    ),
+                  ],
+                ),
+              ),
+              // content hasil suhu
               // Container(
               //   margin: EdgeInsets.fromLTRB(10, 240, 10, 0),
               //   child: Row(
               //     mainAxisAlignment: MainAxisAlignment.spaceAround,
               //     children: [
-              //       titlenhasilsuhu(
+              //       Titlenhasilsuhu(
               //         hasil: kelvin,
               //         title: "Suhu dalam Kelvin",
               //       ),
-              //       titlenhasilsuhu(
+              //       Titlenhasilsuhu(
               //         hasil: reamur,
               //         title: "Suhu dalam Reamur",
               //       ),
               //     ],
               //   ),
               // ),
-              buttonkonverter(
+              Buttonkonverter(
                 konversi: konversi,
               ),
             ],

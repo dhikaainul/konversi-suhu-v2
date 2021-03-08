@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class buttonkonverter extends StatelessWidget {
-  const buttonkonverter({Key key, @required this.konversi}) : super(key: key);
+class Buttonkonverter extends StatelessWidget {
+  const Buttonkonverter({Key key, @required this.konversi}) : super(key: key);
 
   final Function konversi;
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 180),
+      margin: EdgeInsets.only(top: 10),
       // color: Colors.transparent,
       width: double.infinity,
       height: 60,

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-class titlenhasilsuhu extends StatelessWidget {
-  const titlenhasilsuhu({
+class Titlenhasilsuhu extends StatelessWidget {
+  const Titlenhasilsuhu({
     Key key,
-    @required this.hasil,
-    @required this.title,
-  }) : super(key: key);
+    @required double hasil,
+  })  : result = hasil,
+        super(key: key);
 
-  final double hasil;
-  final String title;
+  final double result;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +19,9 @@ class titlenhasilsuhu extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text('$title'),
+          Text("Hasil Konversi"),
           SizedBox(height: 22),
-          Text('$hasil', style: TextStyle(fontSize: 45))
+          Text(result.toStringAsFixed(2), style: TextStyle(fontSize: 45))
         ],
       ),
     );
