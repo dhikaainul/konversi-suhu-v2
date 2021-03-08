@@ -38,12 +38,12 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  List<String> listViewItem = [];
   var listItem = ["Kelvin", "Reamur"];
 
   @override
   Widget build(BuildContext context) {
     var myController2 = myController;
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -101,6 +101,15 @@ class _MyAppState extends State<MyApp> {
               // ),
               Buttonkonverter(
                 konversi: konversi,
+              ),
+              Expanded(
+                child: ListView(
+                  children: listViewItem.map((String value) {
+                    return Container(
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
               ),
             ],
           ),
