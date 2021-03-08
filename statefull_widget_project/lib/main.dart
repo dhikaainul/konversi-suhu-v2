@@ -25,8 +25,10 @@ class _MyAppState extends State<MyApp> {
   konversi() {
     setState(() {
       inputUser = double.parse(myController.text);
-      reamur = 4 / 5 * inputUser;
-      kelvin = inputUser + 273;
+      if (selectedDropdown == "Kelvin")
+        result = inputUser + 273;
+      else
+        result = (4 / 5) * inputUser;
     });
   }
 
