@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:statefull_widget_project/titlenhasilsuhu.dart';
+// import 'package:statefull_widget_project/titlenhasilsuhu.dart';
 // import 'package:flutter/services.dart';
 import 'package:statefull_widget_project/widget/Inputsuhu.dart';
-
 import 'buttonkonverter.dart';
 
 void main() {
@@ -16,10 +15,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  TextEditingController myController = TextEditingController();
   double inputUser = 0;
   double kelvin = 0;
   double reamur = 0;
-  TextEditingController myController = TextEditingController();
+  String selectedDropdown = "Kelvin";
 
   konversi() {
     setState(() {
@@ -29,9 +29,18 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  dropdownOnChanged(String value) {
+    setState(() {
+      selectedDropdown = value;
+    });
+  }
+
+  var listItem = ["Kelvin", "Reamur"];
+
   @override
   Widget build(BuildContext context) {
     var myController2 = myController;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -47,23 +56,34 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: <Widget>[
               Inputsuhu(myController2: myController2),
-              //content hasil suhu
-              Container(
-                margin: EdgeInsets.fromLTRB(10, 240, 10, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    titlenhasilsuhu(
-                      hasil: kelvin,
-                      title: "Suhu dalam Kelvin",
-                    ),
-                    titlenhasilsuhu(
-                      hasil: reamur,
-                      title: "Suhu dalam Reamur",
-                    ),
-                  ],
-                ),
+              DropdownButton<String>(
+                items: listItem.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                value: selectedDropdown,
+                onChanged: dropdownOnChanged,
+                isExpanded: false,
               ),
+              //content hasil suhu
+              // Container(
+              //   margin: EdgeInsets.fromLTRB(10, 240, 10, 0),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //     children: [
+              //       titlenhasilsuhu(
+              //         hasil: kelvin,
+              //         title: "Suhu dalam Kelvin",
+              //       ),
+              //       titlenhasilsuhu(
+              //         hasil: reamur,
+              //         title: "Suhu dalam Reamur",
+              //       ),
+              //     ],
+              //   ),
+              // ),
               buttonkonverter(
                 konversi: konversi,
               ),
