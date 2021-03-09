@@ -19,7 +19,10 @@ class Titlenhasilsuhu extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("Hasil Konversi"),
+          Text(
+            "Hasil",
+            style: TextStyle(fontSize: 20),
+          ),
           SizedBox(height: 22),
           Text(result.toStringAsFixed(2), style: TextStyle(fontSize: 45))
         ],

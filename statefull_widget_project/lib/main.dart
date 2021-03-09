@@ -24,11 +24,32 @@ class _MyAppState extends State<MyApp> {
 
   konversi() {
     setState(() {
+      print(listViewItem.length);
       inputUser = double.parse(myController.text);
-      if (selectedDropdown == "Kelvin")
+      if (selectedDropdown == "Kelvin") {
         result = inputUser + 273;
-      else
-        result = (4 / 5) * inputUser;
+        listViewItem.add("$selectedDropdown" + " : " + "$result");
+      } else if (selectedDropdown == "Reamur") {
+        result = inputUser * 4 / 5;
+        listViewItem.add("$selectedDropdown" + " : " + "$result");
+      }
+      // switch (selectedDropdown) {
+      //   case "Kelvin":
+      //     {
+      //       // statements;
+      //       result = inputUser + 273;
+      //       listViewItem.add("$selectedDropdown" + " : " + "$result");
+      //     }
+      //     break;
+
+      //   case "Reamur":
+      //     {
+      //       //statements;
+      //       result = inputUser * 4 / 5;
+      //       listViewItem.add("$selectedDropdown" + " : " + "$result");
+      //     }
+      //     break;
+      // }
     });
   }
 
@@ -102,10 +123,18 @@ class _MyAppState extends State<MyApp> {
               Buttonkonverter(
                 konversi: konversi,
               ),
+              Container(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  "Riwayat Konversi",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
               Expanded(
                 child: ListView(
                   children: listViewItem.map((String value) {
                     return Container(
+                      margin: EdgeInsets.all(15),
                       child: Text(value),
                     );
                   }).toList(),
